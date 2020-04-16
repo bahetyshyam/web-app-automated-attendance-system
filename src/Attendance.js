@@ -18,7 +18,7 @@ const Attendance = () => {
         setLoading(!loading);
         const data = new FormData();
         data.append("image", selectedFile, selectedFile.name);
-        const response = await axios.post('http://127.0.0.1:8080/', data)
+        const response = await axios.post('http://127.0.0.1:8080/attendence', data)
             .then(data => {
                 setResponseFromServer(data);
                 setLoading(false);
