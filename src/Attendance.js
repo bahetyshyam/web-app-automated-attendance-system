@@ -5,8 +5,18 @@ import ClipLoader from "react-spinners/ClipLoader";
 
 const Attendance = () => {
     const [selectedFile, setSelectedFile] = useState(null);
+    const [subject, setSubject] = useState('IOT');
+    const [className, setClassName] = useState('8 A');
     const [responseFromServer, setResponseFromServer] = useState(null);
     const [loading, setLoading] = useState(false);
+
+    const handleSubjectChange = (e) => {
+        setSubject(e.target.value);
+    }
+
+    const handleClassNameChange = (e) => {
+        setClassName(e.target.value);
+    }
 
     const onFileChange = (e) => {
         e.preventDefault();
@@ -18,8 +28,9 @@ const Attendance = () => {
         setLoading(!loading);
         const data = new FormData();
         data.append("image", selectedFile, selectedFile.name);
-        const response = await axios.post('http://127.0.0.1:8080/attendence', data)
+        await axios.post(`http://127.0.0.1:8080/face-detection/${subject}/${className}`, data)
             .then(data => {
+                console.log(data);
                 setResponseFromServer(data);
                 setLoading(false);
             })
@@ -28,7 +39,7 @@ const Attendance = () => {
                 setLoading(false);
             });
 
-        console.log(response);
+
 
     }
 
@@ -37,10 +48,34 @@ const Attendance = () => {
         <main>
             <div className="container mx-auto">
                 <div className="py-10 px-4 flex flex-col justify-center min-h-screen">
-                    <p className="text-blue-600 text-4xl font-semibold">Let's start by uploading a class photo. Click below to upload a photo for attendance.</p>
+                    <p className="text-blue-600 text-3xl sm:text-4xl lg:text-5xl font-semibold">Please select the subject and the class</p>
+
+                    {/* Select inputs below this  */}
+                    <label className="mt-3 text-blue-600 font-semibold">Subject</label>
+                    <div className="mt-1 inline-block relative">
+                        <select value={subject} onChange={handleSubjectChange} className="block appearance-none w-full text-blue-600 font-semibold bg-transparent border-2 border-blue-600 py-2 px-4 pr-8 shadow-md focus:outline-none">
+                            <option value="IOT">IOT</option>
+                            <option value="BDA">BDA</option>
+                            <option value="SMS">SMS</option>
+                        </select>
+                        <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                            <svg className="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" /></svg>
+                        </div>
+                    </div>
+
+                    <label className="mt-3 text-blue-600 font-semibold">Class</label>
+                    <div className="mt-1 inline-block relative">
+                        <select value={className} onChange={handleClassNameChange} className="block appearance-none w-full text-blue-600 font-semibold bg-transparent border-2 border-blue-600 py-2 px-4 pr-8 shadow-md focus:outline-none">
+                            <option value="8 A">8 A</option>
+                        </select>
+                        <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                            <svg className="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" /></svg>
+                        </div>
+                    </div>
+
                     <input onChange={onFileChange} style={{ display: "none" }} id="file" type="file" accept="image/*" />
-                    <label htmlFor="file" className="mt-3 bg-transparent hover:bg-blue-600 text-blue-600 hover:text-gray-200 text-lg font-semibold py-2 px-4 border-2 border-blue-600 cursor-pointer text-center shadow-md">
-                        {selectedFile ? selectedFile.name : 'Please Select a File'}
+                    <label htmlFor="file" className="mt-10 bg-transparent hover:bg-blue-600 text-blue-600 hover:text-gray-200 text-lg font-semibold py-2 px-4 border-2 border-blue-600 cursor-pointer text-center shadow-md">
+                        {selectedFile ? selectedFile.name : 'Select/Click Picture'}
                     </label>
                     {
                         selectedFile && <button onClick={onFileUpload} className="mt-3 bg-transparent hover:bg-blue-600 text-blue-600 hover:text-gray-200 text-lg font-semibold py-2 px-4 border-2 border-blue-600 cursor-pointer  shadow-md">
@@ -50,8 +85,8 @@ const Attendance = () => {
                                     loading={loading}
                                     size={"1.125rem"}
                                     color={"#3182CE"}
-                                /> : 
-                                'Submit'
+                                /> :
+                                    'Submit'
                             }
 
                         </button>
@@ -63,7 +98,15 @@ const Attendance = () => {
                             <div className="flex items-center">
                                 <div className="py-1"><svg className="fill-current h-6 w-6 text-teal-500 mr-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M2.93 17.07A10 10 0 1 1 17.07 2.93 10 10 0 0 1 2.93 17.07zm12.73-1.41A8 8 0 1 0 4.34 4.34a8 8 0 0 0 11.32 11.32zM9 11V9h2v6H9v-4zm0-6h2v2H9V5z" /></svg></div>
                                 <div>
-                                    <p className="font-bold">{responseFromServer.data.message}</p>
+                                    <p className="font-bold">
+                                        Attendance Saved
+                                    </p>
+                                    <p className="font-bold">
+                                        {`Present - ${responseFromServer.data.result.present.length}`}
+                                    </p>
+                                    <p className="font-bold">
+                                        {`Absent - ${responseFromServer.data.result.absent.length}`}
+                                    </p>
                                     {/* <p className="text-sm">{responseFromServer.data.message}</p> */}
                                 </div>
                             </div>
