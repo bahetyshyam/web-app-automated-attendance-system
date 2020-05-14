@@ -20,7 +20,7 @@ const Home = () => {
                     <div className="px-6 py-4 text-center">
                         <p className="text-white font-bold text-3xl md:text-5xl">Take Attendance</p>
                         <p className="mt-3 text-white text-sm md:text-lg">Let out machine learning algorithm automatically detect your students face</p>
-                        <Link className="inline-block mx-auto mt-6 w-2/3 bg-white text-blue-600 text-lg md:text-2xl font-bold py-2 px-4 rounded-full" to="/take">
+                        <Link className="inline-block mx-auto mt-6 w-2/3 bg-white text-blue-600 text-lg md:text-2xl font-bold py-2 px-4 rounded-full" to="/attendance">
                             TAKE
                         </Link>
                     </div>
