@@ -31,9 +31,13 @@ const App = () => {
   return (
     <Fragment>
       <Switch>
+        {/* <Route path="/" exact component={Home} />} />
+        <Route path="/attendance" component={Attendance} />} />
+        <Route path="/view" component={View} />} /> */}
+
         <Route path="/" exact render={(props) => <Home {...props} students={students} />} />
-        <Route path="/attendance" exact render={(props) => <Attendance {...props} students={students} />} />
-        <Route path="/view" exact render={(props) => <View {...props} students={students} />} />
+        <Route path="/attendance" render={(props) => <Attendance {...props} students={students} />} />
+        <Route path="/view" render={(props) => <View {...props} students={students} />} />
       </Switch>
     </Fragment>
   )
