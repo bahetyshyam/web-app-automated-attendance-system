@@ -2,8 +2,6 @@ import React from 'react';
 import { useState } from 'react';
 import axios from 'axios';
 import ClipLoader from "react-spinners/ClipLoader";
-import { useEffect } from 'react';
-
 
 const Attendance = () => {
     const [selectedFile, setSelectedFile] = useState(null);

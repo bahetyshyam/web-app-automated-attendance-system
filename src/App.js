@@ -31,9 +31,9 @@ const App = () => {
   return (
     <Fragment>
       <Switch>
-        <Route path="/" exact render={(students) => <Home students={students}/>} />
-        <Route path="/attendance" exact render={(students) => <Attendance students={students}/>} />
-        <Route path="/view" exact render={(students) => <View students={students}/>} />
+        <Route path="/" exact render={(props) => <Home {...props} students={students} />} />
+        <Route path="/attendance" exact render={(props) => <Attendance {...props} students={students} />} />
+        <Route path="/view" exact render={(props) => <View {...props} students={students} />} />
       </Switch>
     </Fragment>
   )
