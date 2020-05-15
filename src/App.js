@@ -31,15 +31,9 @@ const App = () => {
   return (
     <Fragment>
       <Switch>
-        <Route path="/">
-          <Home students={students} />
-        </Route>
-        <Route path="/attendance">
-          <Attendance students={students} />
-        </Route>
-        <Route path="/view">
-          <View students={students} />
-        </Route>
+        <Route path="/" exact render={(students) => <Home students={students}/>} />
+        <Route path="/attendance" exact render={(students) => <Attendance students={students}/>} />
+        <Route path="/view" exact render={(students) => <View students={students}/>} />
       </Switch>
     </Fragment>
   )
