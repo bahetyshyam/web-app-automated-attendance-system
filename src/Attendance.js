@@ -2,6 +2,7 @@ import React from 'react';
 import { useState } from 'react';
 import axios from 'axios';
 import ClipLoader from "react-spinners/ClipLoader";
+import ViewCard from './ViewCard';
 
 const Attendance = () => {
     const [selectedFile, setSelectedFile] = useState(null);
@@ -101,10 +102,11 @@ const Attendance = () => {
                     </div>
                 </div>
                 <div className="flex flex-1 justify-center items-center px-6 py-4">
-                    <p className="text-white text-xl">
+                    <ViewCard />
+                    {/* <p className="text-white text-xl">
                         Result Section Comes here
                         Lorem ipsum dolor, sit amet consectetur adipisicing elit. Maxime veniam amet id facere natus quaerat ipsum accusamus dolores, et sit necessitatibus provident dolore cum odio eveniet ex sint. At, commodi.
-                        </p>
+                    </p> */}
                 </div>
             </div>
 

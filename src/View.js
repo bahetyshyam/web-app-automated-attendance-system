@@ -19,7 +19,7 @@ const View = (props) => {
         <main className="bg-blue-600">
             <div className="container mx-auto min-h-screen">
                 <div className="px-6 py-4">
-                    <p className="font-bold text-white text-3xl text-center">View Attendance</p>
+                    <p className="font-bold text-white text-3xl md:text-5xl text-center">View Attendance</p>
 
                     <div className="mt-5">
                         <ViewCard />
