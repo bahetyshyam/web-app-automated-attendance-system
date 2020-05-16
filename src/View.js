@@ -24,6 +24,14 @@ const View = (props) => {
                     <div className="mt-5">
                         <ViewCard />
                         <ViewCard />
+                        <ViewCard />
+                        <ViewCard />
+                        <ViewCard />
+                        <ViewCard />
+                        <ViewCard />
+                        <ViewCard />
+                        <ViewCard />
+                        <ViewCard />
                     </div>
                 </div>
             </div>
