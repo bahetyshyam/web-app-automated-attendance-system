@@ -5,6 +5,14 @@ const ViewCard = (props) => {
     const [isMoreOpen, setIsMoreOpen] = useState(false);
 
     const { students, attendance } = props;
+
+    const currentDate = new Date(attendance.date);
+    const date = currentDate.toDateString();
+    const time = currentDate.toLocaleTimeString();
+
+
+
+
     return (
         <div className="mb-3 w-full">
             <div className="w-full bg-white px-4 py-2">
@@ -12,7 +20,7 @@ const ViewCard = (props) => {
                     <span className="text-blue-600 font-bold text-2xl md:text-4xl">{attendance.subject}</span>
                     <span className="text-gray-600 font-semibold text-lg md:text-2xl">{attendance.class}</span>
                 </div>
-                <p className="mt-1 text-gray-600 font-medium md:text-xl">{attendance.date}</p>
+                <p className="mt-1 text-gray-600 font-medium md:text-xl">{`${date}, ${time}`}</p>
             </div>
             <div onClick={() => setIsMoreOpen(!isMoreOpen)} className="w-full bg-gray-400 px-4 py-2 cursor-pointer">
                 <div className="flex justify-between items-center">
