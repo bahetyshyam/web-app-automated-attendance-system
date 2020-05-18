@@ -3,9 +3,24 @@
   "name": "Automated Attendance Syatem",
   "icons": [
     {
-      "src": "favicon.ico",
-      "sizes": "128x128 64x64 48x48 32x32 24x24 16x16",
-      "type": "image/x-icon"
+      "src": "icon_16.png",
+      "type": "image/png",
+      "sizes": "16x16"
+    },
+    {
+      "src": "icon_24.png",
+      "type": "image/png",
+      "sizes": "24x24"
+    },
+    {
+      "src": "icon_32.png",
+      "type": "image/png",
+      "sizes": "32x32"
+    },
+    {
+      "src": "icon_48.png",
+      "type": "image/png",
+      "sizes": "48x48"
     },
     {
       "src": "icon_192.png",
