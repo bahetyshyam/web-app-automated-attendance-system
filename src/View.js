@@ -9,7 +9,7 @@ const View = (props) => {
     const { students } = props;
 
     useEffect(() => {
-        axios.get('http://127.0.0.1:8080/attendance')
+        axios.get(process.env.REACT_APP_ATTENDANCE_ENDPOINT)
             .then(response => setAttendance(response.data.attendance))
             .catch(err => console.log(err));
     }, []);

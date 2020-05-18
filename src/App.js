@@ -15,7 +15,7 @@ const App = () => {
   const [students, setStudents] = useState(null);
 
   useEffect(() => {
-    axios.get('http://127.0.0.1:8080/students')
+    axios.get(process.env.REACT_APP_STUDENT_ENDPOINT)
       .then(
         response => {
           const studentObject = {};
