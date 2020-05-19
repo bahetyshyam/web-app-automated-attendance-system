@@ -32,7 +32,7 @@ const Attendance = (props) => {
         setLoading(!loading);
         const data = new FormData();
         data.append("image", selectedFile, selectedFile.name);
-        await axios.post(`http://127.0.0.1:8080/face-detection/${subject}/${className}`, data)
+        await axios.post(`${process.env.REACT_APP_TAKE_ATTENDANCE_ENDPOINT}/${subject}/${className}`, data)
             .then(data => {
                 console.log(data);
                 setResponseFromServer(data);
