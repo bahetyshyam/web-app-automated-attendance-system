@@ -1,3 +1,5 @@
+Visit [Automated Attendance System](https://automated-attendance-system.netlify.app/) to view the site live.
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
